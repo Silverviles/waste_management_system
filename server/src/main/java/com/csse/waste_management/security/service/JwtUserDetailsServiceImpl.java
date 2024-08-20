@@ -1,22 +1,30 @@
 package com.csse.waste_management.security.service;
 
 import com.csse.waste_management.common.UserPrivileges;
-import org.springframework.security.core.GrantedAuthority;
+import com.csse.waste_management.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class JwtUserDetailsServiceImpl implements JwtUserDetailsService {
+    UserService userService;
+
+    @Autowired
+    JwtUserDetailsServiceImpl(UserService userService) {
+        this.userService = userService;
+    }
+
     public UserDetails loadUserByUsername(String username) {
-        // FIXME: Temporary driver method to return a UserDetails object
-        PasswordEncoder encoder = new BCryptPasswordEncoder();
-        List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority(UserPrivileges.ADMIN));
-        return new User("dummyUser", encoder.encode("dummyPassword"), authorities);
+        com.csse.waste_management.dao.User user = userService.getUserByUsername(username);
+        if (user == null) {
+            return null;
+        }
+        // FIXME: Allow admin privileges until privileges are fully configured
+        return new User(user.getUsername(), user.getPassword(), List.of(new SimpleGrantedAuthority(UserPrivileges.ADMIN)));
     }
 }
