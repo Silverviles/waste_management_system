@@ -19,12 +19,19 @@ public class JwtUserDetailsServiceImpl implements JwtUserDetailsService {
         this.userService = userService;
     }
 
+    @Override
     public UserDetails loadUserByUsername(String username) {
         com.csse.waste_management.dao.User user = userService.getUserByUsername(username);
         if (user == null) {
             return null;
         }
         // FIXME: Allow admin privileges until privileges are fully configured
+        return new User(user.getUsername(), user.getPassword(), List.of(new SimpleGrantedAuthority(UserPrivileges.ADMIN)));
+    }
+
+    @Override
+    public UserDetails registerNewUser(com.csse.waste_management.dao.User user) {
+        user = userService.saveUser(user);
         return new User(user.getUsername(), user.getPassword(), List.of(new SimpleGrantedAuthority(UserPrivileges.ADMIN)));
     }
 }

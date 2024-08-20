@@ -64,6 +64,6 @@ public class JwtFilter extends OncePerRequestFilter {
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
-        return request.getRequestURI().equals("/login");
+        return request.getRequestURI().equals("/login") || request.getRequestURI().equals("/register");
     }
 }

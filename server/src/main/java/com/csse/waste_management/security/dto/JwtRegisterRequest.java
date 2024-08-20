@@ -1,5 +1,6 @@
 package com.csse.waste_management.security.dto;
 
+import com.csse.waste_management.dao.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,4 +21,8 @@ public class JwtRegisterRequest implements Serializable {
     private String lastName;
     private String email;
     private String password;
+
+    public User getUserFromRequest() {
+        return new User(username, firstName, lastName, email, password);
+    }
 }

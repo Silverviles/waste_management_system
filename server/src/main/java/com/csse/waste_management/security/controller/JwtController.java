@@ -1,8 +1,8 @@
 package com.csse.waste_management.security.controller;
 
 import com.csse.waste_management.common.ModuleExceptionCodes;
-import com.csse.waste_management.dto.CredentialsDTO;
 import com.csse.waste_management.security.dto.JwtLoginRequest;
+import com.csse.waste_management.security.dto.JwtRegisterRequest;
 import com.csse.waste_management.security.dto.JwtResponse;
 import com.csse.waste_management.security.service.JwtUserDetailsService;
 import com.csse.waste_management.security.util.TokenManager;
@@ -47,7 +47,9 @@ public class JwtController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<JwtResponse> registerUser(@RequestBody CredentialsDTO credentials) {
-        return ResponseEntity.ok(new JwtResponse(null, null));
+    public ResponseEntity<JwtResponse> registerUser(@RequestBody JwtRegisterRequest request) {
+        final UserDetails credentials = jwtUserDetailsService.registerNewUser(request.getUserFromRequest());
+        final String token = tokenManager.generateJwtToken(credentials);
+        return ResponseEntity.ok(new JwtResponse(token, null));
     }
 }
