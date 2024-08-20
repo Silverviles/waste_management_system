@@ -1,4 +1,4 @@
-package com.csse.waste_management.security;
+package com.csse.waste_management.security.service;
 
 import com.csse.waste_management.common.UserPrivileges;
 import com.csse.waste_management.dto.CredentialsDTO;
@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class JwtUserDetailsServiceImpl implements JwtUserDetailsService {
-    // FIXME: Temporary driver method to return a CredentialsDTO object
     public CredentialsDTO loadUserByUsername(String username) {
-        CredentialsDTO dummyAdminUser = new CredentialsDTO();
+        // FIXME: Temporary driver method to return a CredentialsDTO object
+        CredentialsDTO dummyAdminUser = new CredentialsDTO("dummyUser", "dummyPassword");
         dummyAdminUser.addAuthority(new SimpleGrantedAuthority(UserPrivileges.ADMIN));
         return dummyAdminUser;
     }

@@ -1,4 +1,4 @@
-package com.csse.waste_management.security;
+package com.csse.waste_management.security.util;
 
 import com.csse.waste_management.dto.CredentialsDTO;
 import io.jsonwebtoken.Claims;
