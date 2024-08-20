@@ -1,6 +1,5 @@
 package com.csse.waste_management.security.util;
 
-import com.csse.waste_management.dto.CredentialsDTO;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;

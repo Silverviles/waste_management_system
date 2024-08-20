@@ -27,4 +27,10 @@ public class CredentialsDTO {
         }
         authorities.add(authority);
     }
+
+    public void removeAuthority(GrantedAuthority authority) {
+        if (authorities != null) {
+            authorities.remove(authority);
+        }
+    }
 }

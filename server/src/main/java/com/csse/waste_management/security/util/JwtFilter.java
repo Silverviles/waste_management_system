@@ -1,10 +1,8 @@
 package com.csse.waste_management.security.util;
 
-import com.csse.waste_management.dto.CredentialsDTO;
 import com.csse.waste_management.security.service.JwtUserDetailsService;
 import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
