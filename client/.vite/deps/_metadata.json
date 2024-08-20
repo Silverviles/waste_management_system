@@ -1,0 +1,67 @@
+{
+  "hash": "9ed6a657",
+  "configHash": "5a0098d5",
+  "lockfileHash": "c0788ccb",
+  "browserHash": "612288e6",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "3bcfa461",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "8abe4bd7",
+      "needsInterop": true
+    },
+    "@material-tailwind/react": {
+      "src": "../../node_modules/@material-tailwind/react/index.js",
+      "file": "@material-tailwind_react.js",
+      "fileHash": "07648d14",
+      "needsInterop": true
+    },
+    "@fortawesome/fontawesome-svg-core": {
+      "src": "../../node_modules/@fortawesome/fontawesome-svg-core/index.mjs",
+      "file": "@fortawesome_fontawesome-svg-core.js",
+      "fileHash": "1ecfd9a0",
+      "needsInterop": false
+    },
+    "@fortawesome/free-solid-svg-icons": {
+      "src": "../../node_modules/@fortawesome/free-solid-svg-icons/index.mjs",
+      "file": "@fortawesome_free-solid-svg-icons.js",
+      "fileHash": "c4b760b5",
+      "needsInterop": false
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "5e748e2d",
+      "needsInterop": false
+    },
+    "@fortawesome/react-fontawesome": {
+      "src": "../../node_modules/@fortawesome/react-fontawesome/index.es.js",
+      "file": "@fortawesome_react-fontawesome.js",
+      "fileHash": "be23c550",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-6OGPTH75": {
+      "file": "chunk-6OGPTH75.js"
+    },
+    "chunk-RZVJAJWH": {
+      "file": "chunk-RZVJAJWH.js"
+    },
+    "chunk-LJANCH76": {
+      "file": "chunk-LJANCH76.js"
+    },
+    "chunk-2PIBWAMS": {
+      "file": "chunk-2PIBWAMS.js"
+    },
+    "chunk-V4OQ3NZ2": {
+      "file": "chunk-V4OQ3NZ2.js"
+    }
+  }
+}
