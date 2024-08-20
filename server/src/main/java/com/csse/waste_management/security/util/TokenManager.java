@@ -6,6 +6,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
@@ -23,7 +24,7 @@ public class TokenManager implements Serializable {
     @Value("${jwt.secret}")
     private String SECRET_KEY;
 
-    public String generateJwtToken(CredentialsDTO credentials) {
+    public String generateJwtToken(UserDetails credentials) {
         Map<String, Object> claims = new HashMap<>();
         return Jwts.builder()
                 .claims().add(claims).and()
@@ -34,7 +35,7 @@ public class TokenManager implements Serializable {
                 .compact();
     }
 
-    public Boolean validateJwtToken(String token, CredentialsDTO credentials) {
+    public Boolean validateJwtToken(String token, UserDetails credentials) {
         final String username = getUsernameFromToken(token);
         boolean isTokenExpired = getAllClaimsFromToken(token).getExpiration().before(new Date());
         return (username.equals(credentials.getUsername()) && !isTokenExpired);

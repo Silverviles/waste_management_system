@@ -12,6 +12,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,7 +41,7 @@ public class JwtController {
         } catch (BadCredentialsException e) {
             return ResponseEntity.badRequest().body(new JwtModelResponse(null, ModuleExceptionCodes.INVALID_CREDENTIALS));
         }
-        final CredentialsDTO credentials = jwtUserDetailsService.loadUserByUsername(request.getUsername());
+        final UserDetails credentials = jwtUserDetailsService.loadUserByUsername(request.getUsername());
         final String token = tokenManager.generateJwtToken(credentials);
         return ResponseEntity.ok(new JwtModelResponse(token, null));
     }
