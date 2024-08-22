@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
+import java.util.logging.Logger;
+
 @Service
 public class UserServiceImpl implements UserService {
+    private static final Logger LOGGER = Logger.getLogger(UserServiceImpl.class.getName());
     UserRepository userRepository;
 
     @Autowired
@@ -17,7 +20,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Boolean isUserExists(String usernameOrEmail) {
-        return ObjectUtils.isEmpty(userRepository.findByUsername(usernameOrEmail)) || ObjectUtils.isEmpty(userRepository.findByEmail(usernameOrEmail));
+        return (!ObjectUtils.isEmpty(userRepository.findByUsername(usernameOrEmail))) || (!ObjectUtils.isEmpty(userRepository.findByEmail(usernameOrEmail)));
     }
 
     @Override
