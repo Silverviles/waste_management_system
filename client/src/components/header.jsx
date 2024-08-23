@@ -1,4 +1,3 @@
-import React from "react";
 import { strings, colors } from "../common/Strings";
 import {
   Popover,
@@ -6,13 +5,19 @@ import {
   PopoverHandler,
 } from "@material-tailwind/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {SignInForm} from "./signin.jsx";
+import {useState} from "react";
 
 /**
  * This is the Header Component which is used to display the header of the application
  * @returns Header component
  */
-
 export default function Header() {
+
+  const [isSignInOpen, setIsSignInOpen] = useState(false);
+  const handleOpenSignIn = () => {
+    setIsSignInOpen(!isSignInOpen);
+  }
   return (
     <div
       className="flex flex-row justify-between items-center px-4 py-2"
@@ -77,7 +82,7 @@ export default function Header() {
                 <li className="hover:font-semibold text-gray-800 pb-2">
                   Profile
                 </li>
-                <li className="hover:font-semibold text-gray-800">
+                <li onClick={handleOpenSignIn} className="hover:font-semibold text-gray-800 hover:cursor-pointer" >
                   Sign In / Create Account
                 </li>
               </ul>
@@ -85,6 +90,7 @@ export default function Header() {
           </PopoverContent>
         </Popover>
       </div>
+      <SignInForm isOpen={isSignInOpen}/>
     </div>
   );
 }

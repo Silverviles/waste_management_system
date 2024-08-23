@@ -5,7 +5,7 @@ import {
   faPerson,
   faSignIn,
   faBell,
-  faBars,
+  faBars, faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faUser, faSign, faPerson, faSignIn, faBell, faBars);
+library.add(faUser, faSign, faPerson, faSignIn, faBell, faBars, faXmark);
