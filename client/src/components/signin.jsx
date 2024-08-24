@@ -7,17 +7,34 @@ import {
     CardFooter,
     Typography,
     Input,
-    Checkbox,
 } from "@material-tailwind/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
+import {loginUser} from "../Thucks/user_thucks.js";
 
 export function SignInForm({isOpen}) {
     const [open, setOpen] = useState(isOpen);
+    const [signInData, setSignInData] = useState({
+        email: "",
+        password: "",
+    });
 
     useEffect(() => {
         setOpen(isOpen);
     }, [isOpen]);
+
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setSignInData({
+            ...signInData,
+            [name]: value,
+        });
+    }
+
+    const handleSignIn = () => {
+        loginUser(signInData);
+    }
 
     const handleClose = () => {
         setOpen(false);
@@ -55,11 +72,11 @@ export function SignInForm({isOpen}) {
                     <Typography className="-mb-2" variant="h6">
                         Your Email
                     </Typography>
-                    <Input label="Email"/>
+                    <Input id="email" name="email" label="Email" onChange={handleInputChange}/>
                     <Typography className="-mb-2" variant="h6">
                         Your Password
                     </Typography>
-                    <Input label="Password" />
+                    <Input id="password" name="password" label="Password" onChange={handleInputChange}/>
 
                 </CardBody>
                 <CardFooter className="pt-0">
